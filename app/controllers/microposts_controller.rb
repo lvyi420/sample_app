@@ -24,6 +24,7 @@ class MicropostsController < ApplicationController
   # POST /microposts
   # POST /microposts.json
   def create
+   
     @micropost = Micropost.new(micropost_params)
 
     respond_to do |format|
@@ -69,6 +70,7 @@ class MicropostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def micropost_params
-      params[:micropost]
+      params.require(:micropost).permit(:context,:user_id)
+     
     end
 end
